@@ -13,7 +13,9 @@ fn main() {
     dotenv().ok();
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![tauri_commands::greet])
+        .invoke_handler(tauri::generate_handler![
+            tauri_commands::fetch_items_command
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

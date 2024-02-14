@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Router from "svelte-spa-router";
   import Header from "./components/Header.svelte";
   import Index from "./pages/Home.svelte";

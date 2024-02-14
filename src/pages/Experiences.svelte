@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Greet from "../lib/Greet.svelte";
+	import Viewer from "../components/Viewer.svelte";
 </script>
 
 <main class="container">
 	<div class="row">
-		<Greet />
+		<Viewer collection_name="experiences" />
 	</div>
 </main>
