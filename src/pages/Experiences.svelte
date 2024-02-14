@@ -1,9 +1,13 @@
 <script lang="ts">
-	import Viewer from "../components/Viewer.svelte";
+  import useCollectionController from '../lib/useCollectionController';
+  import Editor from '../components/Editor.svelte';
+  import Viewer from '../components/Viewer.svelte';
+
+  const collectionName = 'experiences';
+  const myCollectionController = useCollectionController(collectionName);
 </script>
 
 <main class="container">
-	<div class="row">
-		<Viewer collection_name="experiences" />
-	</div>
+  <Editor fetchedItems={myCollectionController} />
+  <Viewer fetchedItems={myCollectionController} />
 </main>

@@ -1,40 +1,34 @@
 <script lang="ts">
-	export let collection_name: String;
-	import { invoke } from "@tauri-apps/api/tauri";
-	import { writable } from "svelte/store";
-	let items = writable([]);
+  export let fetchedItems: any;
 
-	async function fetchItems() {
-		const fetchedItems = await invoke("fetch_items_command", { collection_name });
-		items.set(fetchedItems);
-	}
-
-	fetchItems();
-
-	let name = "";
-	let description = "";
-
-	async function createItem() {
-		const item = { name, description };
-		await invoke("create_item_command", { collection_name, item });
-		fetchItems();
-	}
-
-	async function deleteItem(item_id) {
-		await invoke("delete_item_command", { collection_name, item_id });
-		fetchItems();
-	}
+  function objectEntries(obj: any): [string, any][] {
+    return Object.entries(obj);
+  }
 </script>
 
-<form on:submit|preventDefault={createItem}>
-	<input type="text" bind:value={name} placeholder="Name" />
-	<input type="text" bind:value={description} placeholder="Description" />
-	<button type="submit">Create Item</button>
-</form>
-
-{#each $items as item}
-	<main class="container">
-		<p>{item.name}: {item.description} {item._id.$oid}</p>
-		<button on:click={() => deleteItem(item._id.$oid)}>Delete</button>
-	</main>
-{/each}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    {#each $fetchedItems as item}
+      <tr>
+        <td>{item._id.$oid}</td>
+        <td>
+          <ul>
+            {#each objectEntries(item) as [key, value]}
+              {#if key !== '_id'}
+                <li>{key}: {JSON.stringify(value)}</li>
+              {/if}
+            {/each}
+          </ul>
+        </td>
+        <td><button on:click={() => fetchedItems.deleteItem(item._id.$oid)}
+            >Delete</button></td>
+      </tr>
+    {/each}
+  </tbody>
+</table>

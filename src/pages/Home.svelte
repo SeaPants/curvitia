@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { push } from "svelte-spa-router";
+  import { push } from 'svelte-spa-router';
 </script>
 
 <main class="container">

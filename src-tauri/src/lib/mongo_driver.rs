@@ -21,7 +21,11 @@ pub async fn read_item(collection: &Collection<Document>, item_id: &str) -> Resu
     }
 }
 
-pub async fn update_item(collection: &Collection<Document>, item_id: &str, item: Document) -> Result<()> {
+pub async fn update_item(
+    collection: &Collection<Document>,
+    item_id: &str,
+    item: Document,
+) -> Result<()> {
     let object_id = ObjectId::parse_str(&item_id)?;
     collection
         .update_one(doc! { "_id": object_id }, doc! { "$set": item }, None)
