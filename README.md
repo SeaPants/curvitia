@@ -21,13 +21,21 @@ Welcome to [Curvitia](https://github.com/SeaPants/curvitia), the next-generation
 
 ## Getting Started
 
-To get started with Curvitia, follow these steps to set up the project on your local machine.
-
 ### Prerequisites
 
 - [Yarn](https://yarnpkg.com/) is used as a package manager for handling the Svelte project dependencies.
 - [Rust](https://www.rust-lang.org/) for working with the Tauri backend.
 - [MongoDB](https://www.mongodb.com/) should be set up and running.
+
+### Environment Setup
+
+Before running the application, you need to set up your environment variables. Create a `.env` file in the root of the project and add the following line:
+
+```env
+MONGODB_URI=mongodb://localhost:27017
+```
+
+This line specifies the URI for connecting to your MongoDB instance. Adjust the URI according to your MongoDB configuration if necessary.
 
 ### Installation
 
@@ -63,15 +71,6 @@ Ensure you're in the project root directory or navigate to it if you're elsewher
 ```bash
 yarn tauri dev
 ```
-
-This command will start the Tauri development server, which compiles the Rust code and launches the application window. The `yarn tauri dev` command is correct if you have configured your `package.json` in the `src` directory to include Tauri commands, which is a common setup for projects integrating Tauri with a frontend framework like Svelte.
-
-It's important to have the Tauri CLI installed globally or managed through your project's dependencies for these commands to work. The setup implies a Node.js environment for managing these aspects, even if Node.js is not required for executing the final, built application.
-
-## Project Structure
-
-- **Svelte Frontend:** Located in the `src` directory, it contains all the UI components, services, and state management for Curvitia.
-- **Tauri Backend:** The Rust-based backend can be found in the `src-tauri` directory, handling secure operations, database interactions, and serving as the bridge between the frontend and MongoDB.
 
 ## Contributing
 
