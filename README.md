@@ -1,5 +1,9 @@
 # Curvitia
 
+<div align="center">
+<img src="/misc/logo.png" alt="Curvitia Logo" title="Curvitia" width="300" height="300">
+</div>
+
 Welcome to [Curvitia](https://github.com/SeaPants/curvitia), the next-generation platform designed to redefine the way you manage CVs. Our mission is to offer a seamless, intuitive, and comprehensive experience for both individuals and organizations looking to streamline their CV management processes. Built with cutting-edge technologies, Curvitia ensures efficiency, security, and scalability.
 
 ## Features
