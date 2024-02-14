@@ -14,7 +14,11 @@ fn main() {
 
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
-            tauri_commands::fetch_items_command
+            tauri_commands::create_item_command,
+            tauri_commands::read_item_command,
+            tauri_commands::update_item_command,
+            tauri_commands::delete_item_command,
+            tauri_commands::fetch_items_command,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
