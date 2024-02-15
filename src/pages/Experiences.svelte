@@ -1,13 +1,20 @@
 <script lang="ts">
   import useCollectionController from '../lib/useCollectionController';
-  import Editor from '../components/Editor.svelte';
+  import ExperienceForm from '../components/ExperienceForm.svelte';
   import Viewer from '../components/Viewer.svelte';
+  import EditModal from '../components/EditModal.svelte';
 
   const collectionName = 'experiences';
   const myCollectionController = useCollectionController(collectionName);
+
+  let myEditor = ExperienceForm;
 </script>
 
 <main class="container">
-  <Editor fetchedItems={myCollectionController} />
-  <Viewer fetchedItems={myCollectionController} />
+  <EditModal
+    contentComponent={myEditor}
+    fetchedItems={myCollectionController}
+    mode="create" />
+
+  <Viewer contentComponent={myEditor} fetchedItems={myCollectionController} />
 </main>

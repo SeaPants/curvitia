@@ -1,4 +1,7 @@
 <script lang="ts">
+  import EditModal from './EditModal.svelte';
+
+  export let contentComponent: any;
   export let fetchedItems: any;
 
   function objectEntries(obj: any): [string, any][] {
@@ -11,6 +14,7 @@
     <tr>
       <th>ID</th>
       <th>Fields</th>
+      <th>Edit / Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -26,8 +30,18 @@
             {/each}
           </ul>
         </td>
-        <td><button on:click={() => fetchedItems.deleteItem(item._id.$oid)}
-            >Delete</button></td>
+        <td>
+          <EditModal
+            {contentComponent}
+            {fetchedItems}
+            mode="update"
+            itemId={item._id.$oid} />
+          <EditModal
+            {contentComponent}
+            {fetchedItems}
+            mode="delete"
+            itemId={item._id.$oid} />
+        </td>
       </tr>
     {/each}
   </tbody>
